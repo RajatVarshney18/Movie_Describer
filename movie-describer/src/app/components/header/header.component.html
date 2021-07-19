@@ -2,18 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h3 class="app-clickable" [routerLink]="['/home']">Movie Browser</h3>
+                <h3 class="app-clickable" [routerLink]="['/home']">Movie Describer</h3>
             </div>
             <div class="col-md-8">
                 <form (submit)="submitHandler($event)">
-                    <input type="search" name="queryTerm" 
-                    autofocus="autofocus"
-                    [(ngModel)]="queryTerm"
-                    placeholder="search movies..."
-                    class="form-control">
+                    <input type="text" name="queryTerm"
+                     autofocus
+                     [(ngModel)] = "queryTerm"
+                     placeholder="search movies..." class="form-control">
                 </form>
             </div>
         </div>
-
     </div>
-</div>
+</div>  
