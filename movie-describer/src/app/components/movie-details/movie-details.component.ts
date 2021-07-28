@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
+  movie: any;
+  constructor(private services: MoviesService, private activatedRoute: ActivatedRoute) { }
 
-  constructor() { }
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params=>{
+      let id = params['imdbID'];
+      this.services.getMovieDetails(id).subscribe(resp=>this.movie = resp);
+    });
+  }
 
-  ngOnInit(): void {
+  goBack(){
+    window.history.back();
   }
 
 }
